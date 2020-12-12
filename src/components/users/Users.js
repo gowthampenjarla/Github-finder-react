@@ -89,8 +89,8 @@ export class Users extends Component {
     return (
       <div className='row'>
         {this.state.users.map((user) => (
-          <div className='col-sm-4'>
-            <UserItem key={user.item} user={user} />
+          <div className='col-sm-4' key={user.id}>
+            <UserItem user={user} />
           </div>
         ))}
       </div>
