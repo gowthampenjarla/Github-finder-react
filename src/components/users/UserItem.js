@@ -13,7 +13,7 @@ const UserItem = (props) => {
         style={{ width: "60px" }}
       />
       <h3>{login}</h3>
-      <div type='button' className='btn btn-dark btn-sm  my-1'>
+      <div type='button' className='btn btn-dark btn-sm my-2'>
         <a href={html_url} target='_blank' rel='noreferrer'>
           More
         </a>

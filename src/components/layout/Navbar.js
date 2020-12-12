@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const Navbar = ({ title }) => {
   return (
-    <nav className='navbar bg-dark text-light'>
+    <nav className='navbar bg-dark text-light mb-3'>
       {/* <i className='fa fa-github'></i> */}
-      <h2> {title}</h2>
+      <h2 className='container'> {title}</h2>
     </nav>
   );
 };
