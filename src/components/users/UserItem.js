@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
 
 const UserItem = (props) => {
   const { login, avatar_url, html_url } = props.user;
@@ -13,11 +14,18 @@ const UserItem = (props) => {
         style={{ width: "60px" }}
       />
       <h3>{login}</h3>
-      <div type='button' className='btn btn-dark btn-sm my-2'>
-        <a href={html_url} target='_blank' rel='noreferrer'>
-          More
-        </a>
-      </div>
+      {/* <a href={html_url} class='my-2 btn btn-dark btn-sm' target='_blank'>
+        More
+      </a> */}
+      <Button
+        href={html_url}
+        target='_blank'
+        variant='dark'
+        size='sm'
+        className='my-2'
+      >
+        More
+      </Button>
     </div>
   );
 };
