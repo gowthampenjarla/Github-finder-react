@@ -22,7 +22,7 @@ const Search = ({ searchUsers, showClear, clearUsers }) => {
   };
 
   return (
-    <div>
+    <div className='mt-4'>
       <Alert
         variant='danger'
         show={alert}

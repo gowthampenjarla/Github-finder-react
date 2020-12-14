@@ -15,6 +15,7 @@ export class App extends Component {
     users: [],
     loading: false,
     user: {},
+    repos: [],
   };
 
   searchUsers = async (text) => {
@@ -30,7 +31,16 @@ export class App extends Component {
     const res = await axios.get(
       `https://api.github.com/users/${userName}?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
     );
+
     this.setState({ loading: false, user: res.data });
+  };
+
+  getUserRepos = async (userName) => {
+    this.setState({ loading: true });
+    const res = await axios.get(
+      `https://api.github.com/users/${userName}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_CLIENT_SECRET}`
+    );
+    this.setState({ loading: false, repos: res.data });
   };
 
   clearUsers = () => {
@@ -68,8 +78,10 @@ export class App extends Component {
                   <User
                     {...props}
                     getUser={this.getUser}
+                    getUserRepos={this.getUserRepos}
                     loading={this.state.loading}
                     user={this.state.user}
+                    repos={this.state.repos}
                   />
                 )}
               />

@@ -1,11 +1,15 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
+import Repos from "../repos/Repos";
 
 export class User extends Component {
-  static propTypes = {};
+  static propTypes = {
+    repos: PropTypes.array.isRequired,
+  };
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getUserRepos(this.props.match.params.login);
   }
 
   render() {
@@ -25,7 +29,7 @@ export class User extends Component {
       hireable,
     } = this.props.user;
 
-    const { loading } = this.props.loading;
+    const { loading, repos } = this.props;
 
     if (this.props.loading) {
       return (
@@ -81,6 +85,7 @@ export class User extends Component {
               </div>
             </div>
           </div>
+          <Repos repos={repos} />
         </div>
       );
     }
