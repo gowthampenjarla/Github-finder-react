@@ -1,9 +1,11 @@
-import React, { Fragment, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, useEffect, useContext } from "react";
 import Loader from "react-loader-spinner";
 import Repos from "../repos/Repos";
+import GithubContext from "../../context/github/githubContext";
 
-const User = ({ getUser, getUserRepos, match, user, repos, loading }) => {
+const User = ({ match }) => {
+  const githubContext = useContext(GithubContext);
+  const { getUser, loading, user, repos, getUserRepos } = githubContext;
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
@@ -57,7 +59,7 @@ const User = ({ getUser, getUserRepos, match, user, repos, loading }) => {
                   <p>{bio}</p>
                 </Fragment>
               )}
-              <ul>
+              <ul className='user'>
                 <li>
                   {login && (
                     <Fragment>
@@ -84,7 +86,5 @@ const User = ({ getUser, getUserRepos, match, user, repos, loading }) => {
     );
   }
 };
-Repos.propTypes = {
-  repos: PropTypes.array.isRequired,
-};
+
 export default User;

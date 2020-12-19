@@ -145,9 +145,12 @@ a {
 li {
   margin: 5px 10px;
 }
-ul {
+ul.user {
   list-style-type: none;
   padding-inline-start: 0px;
+  li {
+    margin-left: 0;
+  }
 }
 .repo {
   height: 3rem;
